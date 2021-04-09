@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-12">
+			<div class="panel panel--raised" style="background-color:#dee2e6; text-align:center;">
+				<form method="post">
+					<div class="row base-margin-bottom">
+						<div class="col-12" style="text-align:center;">
+							<h1><u><b>DNA-Center Template:</b></u> {{ template_name }}</h1>
+						</div>
+					</div>
+					<div class="row base-margin-bottom">
+						<div class="col-12">
+							<div class="responsive-table" style="text-align:left;">
+								<table id="templateDetailsTable" class="table table--striped table--lined">
+									<thead>
+										<tr>
+											<th class="sortable">Key <span class="sort-indicator icon-dropdown"></span></th>
+											<th>Value</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for item in template_Details %}
+										<tr>
+											<td>{{ item[0] }}</td>
+											<td>{{ item[1] }}</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+								<script>
+									function searchByName() {
+										var input, filter, table, tr, td, i, txtValue;
+										input = document.getElementById("filterTemplates");
+										filter = input.value.toUpperCase();
+										table = document.getElementById("templateTable");
+										tr = table.getElementsByTagName("tr");
+										for (i = 0; i < tr.length; i++) {
+											td = tr[i].getElementsByTagName("td")[0];
+											if (td) {
+												txtValue = td.textContent || td.innerText;
+												if (txtValue.toUpperCase().indexOf(filter) > -1) {
+													tr[i].style.display = "";
+												}
+												else {
+													tr[i].style.display = "none";
+											  	}
+											}
+										}
+									}
+								</script>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

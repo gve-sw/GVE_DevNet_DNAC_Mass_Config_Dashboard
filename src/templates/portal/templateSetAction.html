@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-12">
+			<div class="panel panel--raised" style="background-color:#f2f2f2; text-align:center;">
+				<form method="post" enctype="multipart/form-data">
+					<div class="row base-margin-bottom">
+						<div class="col-1"></div>
+						<div class="col-10" style="text-align:left;">
+							<h1>{% block title %}<b><u>Deploy:</u></b> {{template_name}}{% endblock %}</h1>
+						</div>
+						<div class="col-1"></div>
+					</div>
+
+					<div class="row base-margin-bottom">
+						<div class="col-1"></div>
+						<div class="col-10">
+							<div class="steps steps--primary">
+								<div class="step visited">
+									<div class="step__icon"><span class="icon-check"></span></div>
+									<div class="step__label">Setup</div>
+								</div>
+								<div class="step active">
+									<div class="step__icon">2</div>
+									<div class="step__label"><b>Set Parameters</b></div>
+								</div>
+								<div class="step">
+									<div class="step__icon" style="background-color:#ced4da;">3</div>
+									<div class="step__label">Deploy</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-1"></div>
+					</div>
+					<div class="row base-margin-bottom">
+						<div class="col-1"></div>
+						<div class="col-6">
+							<label for="templateParamTable"><u>Define Template Parameters:</u></label>
+							<div class="responsive-table" style="text-align:left;">
+								<table id="templateParamTable" class="table table--striped table--lined">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Value</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for param in template_parameters %}
+										<tr>
+											<td>{{ param['parameterName'] }} ({{param['dataType']}})</td>
+											<td>
+												<div class="form-group">
+													<div class="form-group__text">
+														<input id="{{param['parameterName']}}" type="text" placeholder="default: {{param['defaultValue']}}">
+													</div>
+												</div>
+											</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="col-1"></div>
+						<div class="col-3">
+							<label for="file"><u>Upload Param File</u></label>
+							<input type="file" name="file" id="file">
+						</div>
+						<div class="col-1"></div>
+					</div>
+
+					<div class="row base-margin-bottom">
+						<div class="col-4"></div>
+						<div class="col-4">
+							<input class="btn btn--primary btn--justified" value="Deploy" type="submit" style="background-color:#eed202;">
+						</div>
+						<div class="col-4"></div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

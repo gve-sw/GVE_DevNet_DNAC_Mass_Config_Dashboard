@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-12">
+			<div class="panel panel--raised" style="background-color:#dee2e6; text-align:center;">
+				<form method="post">
+					<div class="row base-margin-bottom">
+						<div class="col-2"></div>
+						<div class="col-8">
+							<h1>{% block title %}<u>Update Prototype Settings</u>{% endblock %}</h1>
+						</div>
+						<div class="col-2"></div>
+					</div>
+
+					<div class="row base-margin-bottom">
+						<div class="col-3">
+							<h5>DNA-Center:</h5>
+						</div>
+						<div class="col-3">
+							<label for="dnac_host">Host:</label>
+							<input type="dnac_host" name="dnac_host" id="dnac_host">
+						</div>
+						<div class="col-3">
+							<label for="dnac_username">Username:</label>
+							<input name="dnac_username" id="dnac_username">
+						</div>
+
+						<div class="col-3">
+							<label for="dnac_password">Password:</label>
+							<input type="dnac_password" name="dnac_password" id="dnac_password">
+						</div>
+					</div>
+
+					<div class="row base-margin-bottom">
+						<div class="col-3">
+							<h5>ClearPass:</h5>
+						</div>
+						<div class="col-1"></div>
+						<div class="col-4">
+							<label for="corp_Dot1x_cluster">Corp Dot1x cluster:</label>
+							<input type="corp_Dot1x_cluster" name="corp_Dot1x_cluster" id="corp_Dot1x_cluster">
+						</div>
+						<div class="col-4">
+							<label for="guest_Cluster">Guest cluster:</label>
+							<input name="guest_Cluster" id="guest_Cluster">
+						</div>
+					</div>
+
+					<div class="row base-margin-bottom">
+						<div class="col-4"></div>
+						<div class="col-4">
+							<input class="btn btn--primary btn--justified" type="submit" value="Apply Settings" style="background-color:#eed202;">
+						</div>
+						<div class="col-4"></div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

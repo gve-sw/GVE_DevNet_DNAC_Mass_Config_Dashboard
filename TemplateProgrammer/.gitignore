@@ -1,0 +1,12 @@
+#[tests]
+tests/
+USE_ENV_FOR_DNAC
+__pycache__/
+__init__.py
+*.pyc
+Examples
+archive.121
+archive_template.py
+newTemplate.save
+template.save
+

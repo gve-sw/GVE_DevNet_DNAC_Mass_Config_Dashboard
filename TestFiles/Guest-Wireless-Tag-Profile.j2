@@ -1,0 +1,30 @@
+{% SET SITE_CODE_LIST = SITE_CODE %}
+{% SET DESCRIPTION_LIST = DESCRIPTION %}
+
+{% FOR ITEM in SITE_CODE_LIST %}
+{% SET SITE = SITE_CODE_LIST[loop.index-1] %}
+{% SET DESCRIPTION = DESCRIPTION_LIST[loop.index-1] %}
+
+wireless profile flex FP_{{SITE}}
+acl-policy CAPTIVE_PORTAL_REDIRECT
+central-webauth
+no arp-caching
+no local-auth ap radius
+native-vlan-id 2
+vlan-name data
+acl Flex_Profile_Allow_All
+vlan-id 2
+vlan-name myFi
+acl Flex_Profile_Allow_All
+vlan-id 31
+vlan-name guest
+acl Flex_Profile_Allow_All
+vlan-id 21
+
+wireless tag site ST_{{SITE}}
+ap-profile MyApProfile
+description {{DESCRIPTION}}
+no local-site
+flex-profile FP_{{SITE}}
+
+{% ENDFOR %}

@@ -1,0 +1,35 @@
+{% set selector = $GuestSsidSelector %}
+
+{% for policyProfile in selector['policyProfiles'].split(',') %}
+wireless profile policy {{policyProfile}}
+shutdown
+aaa-override
+accounting-list Guest_Accounting
+no central association
+no central dhcp
+no central switching
+dot11 24ghz airtime-fairness default-atf-profile
+dot11 5ghz airtime-fairness default-atf-profile
+nac
+no shutdown
+{% endfor %}
+
+wlan {{selector['policyProfiles'].split(',')[0]}} {{selector['wlanId']}} {{selector['ssidName']}}
+shutdown
+assisted-roaming dual-list
+assisted-roaming prediction
+band-select
+bss-transition dual-list
+ccx aironet-iesupport
+channel-scan defer-priority 4
+no dms
+no dot11ax downlink-mumimo
+no dot11ax downlink-ofdma
+no dot11ax uplink-mumimo
+no dot11ax uplink-ofdma
+mac-filtering Guest_Authorization
+no mu-mimo
+scan-report association
+scan-report roam
+security dot1x authentication-list Guest_Authentication
+no shutdown
